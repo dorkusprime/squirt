@@ -214,13 +214,13 @@ sq.host =  window.location.search.match('sq-dev') ?
       if('.!?'.indexOf(lastChar) != -1) return waitAfterPeriod;
       if(',;:–'.indexOf(lastChar) != -1) return waitAfterComma;
 
-      var syllablized_word = removeDiacriticVowels(word);
+      var syllablizedWord = removeDiacriticVowels(word);
 
-      if(syllablized_word.length <= 3) {
+      if(syllablizedWord.length <= 3) {
         syllableWait = sigmoidWaits[1];
       } else {
-        syllablized_word = syllablized_word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '').replace(/^y/, '');
-        var chosen_vowels = syllablized_word.match(/[aeiouy]{1,2}/g);
+        syllablizedWord = syllablizedWord.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '').replace(/^y/, '');
+        var chosen_vowels = syllablizedWord.match(/[aeiouy]{1,2}/g);
         if (chosen_vowels) {
           syllableWait = sigmoidWaits[chosen_vowels.length - 1] || sigmoidWaits[sigmoidWaits.length - 1];
         } else {
